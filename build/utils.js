@@ -13,6 +13,21 @@ exports.assetsPath = function (_path) {
     return path.posix.join(assetsSubDirectory, _path)
 }
 
+/**
+ * 构造多个css对象
+ *
+ * {
+ *     css: []
+ *
+ *
+ * }
+ *
+ *
+ *
+ *
+ *
+ * @param options {sourceMap, extract, usePostCSS} 支持3个参数
+ */
 exports.cssLoaders = function (options) {
     options = options || {}
 
@@ -57,19 +72,54 @@ exports.cssLoaders = function (options) {
     }
 
     return {
+        //使用vue-style-loader, css-loader, postcss-loader
         css: generateLoaders(),
         postcss: generateLoaders(),
+        //使用vue-style-loader, css-loader, postcss-loader, less-loader
         less: generateLoaders('less'),
+        //使用vue-style-loader, css-loader, postcss-loader, sass-loader
         sass: generateLoaders('sass', {
             indentedSyntax: true
         }),
+        //使用vue-style-loader, css-loader, postcss-loader, sass-loader
         scss: generateLoaders('sass'),
+        //使用vue-style-loader, css-loader, postcss-loader, stylus-loader
         stylus: generateLoaders('stylus'),
+        //使用vue-style-loader, css-loader, postcss-loader, stylus-loader
         styl: generateLoaders('stylus')
 
     }
 }
 
+/**
+ * 返回多个css，postcss, less等等 rule数组
+ * [
+ *   {
+ *       test: /\.css$/,
+ *       use: ['vue-style-loader',
+ *              {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: options.sourceMap
+                    }
+ *              },
+ *              {
+                    loader: 'postcss-loader',
+                    options: {
+                        sourceMap: options.sourceMap
+                    }
+                }
+ *
+ *
+ *            ]
+ *   }
+ *
+ *
+ * ]
+ *
+ * @param options
+ * @returns {Array}
+ */
 exports.styleLoaders = function (options) {
     const output = []
     const loaders = exports.cssLoaders(options)
