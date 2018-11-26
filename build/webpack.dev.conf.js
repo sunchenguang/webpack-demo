@@ -10,7 +10,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -23,13 +23,6 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 const devWebpackConfig = merge(baseWebpackConfig, {
     mode: 'development',
     module: {
-        // rules: [
-        //     {
-        //         test: /\.css$/,
-        //         use: ['style-loader', 'css-loader', 'postcss-loader']
-        //     }
-        //
-        // ]
         rules: utils.styleLoaders({
             usePostCSS: true,
             sourceMap: config.dev.cssSourceMap
@@ -69,6 +62,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             templateParameters: {
                 BASE_URL: config.dev.assetsPublicPath + config.dev.assetsSubDirectory
             }
+        }),
+        new webpack.DllReferencePlugin({
+            // 描述 react 动态链接库的文件内容
+            manifest: require('../dist/elementUI.manifest.json')
+        }),
+        new HtmlWebpackIncludeAssetsPlugin({
+            assets: ['dist/elementUI.dll.js'],
+            append: false,
+            publicPath: false
         })
     ]
 })

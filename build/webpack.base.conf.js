@@ -7,6 +7,7 @@ const utils = require('./utils')
 const config = require('../config')
 const {VueLoaderPlugin} = require('vue-loader')
 const vueLoaderConfig = require('./vue-loader.conf')
+const HappyPack = require('happypack')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -51,7 +52,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                loader: 'babel-loader?cacheDirectory',
+                loader: 'happypack/loader?id=babel',
                 include: [
                     resolve('src'),
                     resolve('test'),
@@ -95,7 +96,10 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
-
+        new HappyPack({
+            id: 'babel',
+            loaders: ['babel-loader?cacheDirectory']
+        })
     ],
     node: {
         setImmediate: false,
