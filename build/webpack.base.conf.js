@@ -38,7 +38,8 @@ module.exports = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             '@': resolve('src')
-        }
+        },
+        modules: [resolve('node_modules')]
     },
     module: {
         rules: [
@@ -93,7 +94,8 @@ module.exports = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+
     ],
     node: {
         setImmediate: false,

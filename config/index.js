@@ -29,7 +29,7 @@ module.exports = {
         productionGzip: false,
         productionGzipExtensions: ['js', 'css'],
         bundleAnalyzerReport: process.env.npm_config_report || false,
-        generateAnalyzerReport: process.env.npm_config_generate_report || false
+        generateAnalyzerReport: process.env.npm_config_generate_report || true
     }
 }
 
