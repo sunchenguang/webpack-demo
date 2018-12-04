@@ -1,26 +1,56 @@
 <template>
-  <div>
-    11111222334455566666999990009999
-  </div>
+    <div class="test">
+        1111122233445556666699999000999977777888999001111
+        <div class="test-div">
+            sssddddddddddddddd
+            <p class="test-p">aaa</p>
+            <span class="test-span">
+                <span class="demo">ccc</span>
+                bbb
+            </span>
+            <test></test>
+        </div>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'App',
-  components: {},
-  mixins: [],
-  props: {},
-  data() {
-    return {}
-  },
-  computed: {},
-  watch: {},
-  created() {
-  },
-  methods: {}
-}
+    import Test from './test'
+    export default {
+        name: 'App',
+        components: {
+            Test
+        },
+        mixins: [],
+        props: {},
+        data() {
+            return {}
+        },
+        computed: {},
+        watch: {},
+        created() {
+        },
+        methods: {}
+    }
 </script>
 
 <style scoped lang="scss">
+    .test {
+        .test-div {
+            color: red
+        }
 
+        .test-p {
+            color: blue;
+        }
+
+        .test-span {
+            color: yellow
+        }
+        .demo {
+            color: gray;
+        }
+        .main {
+            color: aqua;
+        }
+    }
 </style>

@@ -45,7 +45,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         proxy: config.dev.proxyTable,
         quiet: true,
         watchOptions: {
-            poll: config.dev.poll
+            poll: config.dev.poll,
+            ignored: /node_modules/
         }
     },
     plugins: [
