@@ -6,6 +6,7 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import App from './App'
+import './icons'
 
 Vue.use(Element)
 

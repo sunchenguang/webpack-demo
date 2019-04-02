@@ -1,29 +1,30 @@
 <template>
-    <div>
-        <div class="main">
-            1111
-        </div>
+  <div>
+    <div class="main">
+      1111
     </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "test",
-        mixins: [],
-        props: {},
-        components: {},
-        created() {
-        },
-        data() {
-
-            return {}
-        },
-        methods: {},
-        computed: {},
-        watch: {}
-    }
+export default {
+  name: 'Test',
+  components: {},
+  mixins: [],
+  props: {},
+  data() {
+    return {}
+  },
+  computed: {},
+  watch: {},
+  created() {
+  },
+  methods: {}
+}
 </script>
 
 <style scoped lang="scss">
-
+    .hello {
+        color: red;
+    }
 </style>

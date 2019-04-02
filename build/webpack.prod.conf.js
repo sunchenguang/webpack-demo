@@ -40,6 +40,18 @@ const webpackConfig = merge(baseWebpackConfig, {
         filename: utils.assetsPath('js/[name].[chunkhash:8].js'),
         chunkFilename: utils.assetsPath('js/[name].[chunkhash:8].js')
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
+    },
     plugins: [
         new webpack.DefinePlugin({
             'process.env': env
@@ -65,7 +77,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         }),
         new webpack.DllReferencePlugin({
             // 描述 react 动态链接库的文件内容
-            manifest: require('../dist/elementUI.manifest.json'),
+            manifest: require('../dist/elementUI.manifest.json')
         }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: ['/elementUI.dll.js'],
